@@ -12,9 +12,29 @@ It includes:
 
 == Commands
 
-- `make build`: Compiles Antora Docs.
 - `make install`: Builds the Dockerfile.
+- `make build`: Compiles Antora Docs.
+- `make sh`: Opens the Container.
 - `make server`: Starts a new server for the html version. (requires python3).
+
+== Usage
+
+. Change `CONTAINER_LABEL=local/antora:example-docs` (in Makefile) to an unique name for your docs.
+. Install the Container: `make install`.
+. (In another terminal) Open a localhost: `make server`.
+. Open Container: `make sh`.
+. Run Antora: `antora antora-playbook.yml --stacktrace`.
+. See results in `localhost:8000`
+
+If something does not work or not render well remember that *antora* needs a git repository.
+
+- `git init`: Creates a new git repo.
+- `git commit -am 'update docs'`: Creates a new commit, after this try to render the docs again.
+
+[NOTE]
+====
+If you want to have `make` in Windows you can use https://git-scm.com/install/windows[bash from git]
+====
 
 == License
 

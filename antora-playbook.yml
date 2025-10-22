@@ -17,7 +17,7 @@ asciidoc:
   extensions:
     - asciidoctor-emoji
     - asciidoctor-kroki
-    #- "@djencks/asciidoctor-mathjax"
+    - "@djencks/asciidoctor-mathjax"
   attributes:
     kroki-fetch-diagram: true
     experimental: ""

@@ -1,5 +1,5 @@
 = Welcome!
-:navtitle: Welcome
+:navtitle: Welcome2
 
 Example using _UML_ and _Emoji_.
 
