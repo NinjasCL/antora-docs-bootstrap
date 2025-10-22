@@ -58,8 +58,15 @@ modules/
     ...
 ----
 
+- pages: Will contain the adoc pages for the content.
+- images: Will contain images used inside the pages with `image::image1.png[]`.
+- examples: Will contain code examples and other resources for the content. 
+
+=== Contents
+
 Inside `nav.adoc` you must put the pages.
 
+.nav.adoc
 [source, asciidoc]
 ----
 .Users
@@ -67,16 +74,12 @@ Inside `nav.adoc` you must put the pages.
 * xref:roles.adoc[]
 ----
 
-- pages: Will contain the adoc pages for the content.
-- images: Will contain images used inside the pages with `image::image1.png[]`.
-- examples: Will contain code examples and other resources for the content. 
+Inside `examples` you can store code.
 
+.examples/example.py
 [source, asciidoc]
 ----
-[source, python]
-----
 include::example$example.py[]
-----
 ----
 
 == License
