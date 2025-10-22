@@ -6,7 +6,7 @@ This is a simple configuration for creating documentation with https://docs.anto
 
 It includes:
 
-- Dockerfile (podman)
+- Dockerfile
 - Kroki (Plant UML and others)
 - Search
 
@@ -35,6 +35,49 @@ If something does not work or not render well remember that *antora* needs a git
 ====
 If you want to have `make` in Windows you can use https://git-scm.com/install/windows[bash from git]
 ====
+
+== How to add content
+
+Inside `modules` you can add a new module that will contain pages, examples and images.
+
+Example let's create a new *users* module.
+
+[source, text]
+----
+modules/
+  users/
+   nav.adoc
+   pages/
+      users.adoc
+      roles.adoc
+    images/
+      image1.png
+    examples/
+      example.py
+  ROOT/
+    ...
+----
+
+Inside `nav.adoc` you must put the pages.
+
+[source, asciidoc]
+----
+.Users
+* xref:users.adoc[]
+* xref:roles.adoc[]
+----
+
+- pages: Will contain the adoc pages for the content.
+- images: Will contain images used inside the pages with `image::image1.png[]`.
+- examples: Will contain code examples and other resources for the content. 
+
+[source, asciidoc]
+----
+[source, python]
+----
+include::example$example.py[]
+----
+----
 
 == License
 
