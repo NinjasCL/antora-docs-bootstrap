@@ -1,5 +1,5 @@
 = Welcome!
-:navtitle: Welcome2
+:navtitle: Welcome
 
 Example using _UML_ and _Emoji_.
 
@@ -23,6 +23,15 @@ emoji:bear[5x]
 const User = ({
     username:'clsource'
 });
+----
+
+.Image from directory
+image::elixircl.png[width="25%"]
+
+.Include code from examples
+[source, elixir]
+----
+include::example$example.exs[]
 ----
 
 [dbml]

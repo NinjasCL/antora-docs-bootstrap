@@ -23,6 +23,8 @@ It includes:
 . Install the Container: `make install`.
 . (In another terminal) Open a localhost: `make server`.
 . Open Container: `make sh`.
+. Change settings in `antora-playbook.yml`
+. Add modules in `antora.yml`
 . Run Antora: `antora antora-playbook.yml --stacktrace`.
 . See results in `localhost:8000`
 

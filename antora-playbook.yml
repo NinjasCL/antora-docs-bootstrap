@@ -25,7 +25,7 @@ asciidoc:
     idseparator: "-"
     page-pagination: ""
     highlightjs-theme: monokai
-    highlightjs-languages: js, elixir, sql, yaml, html, css
+    highlightjs-languages: js, elixir, sql, yaml, html, css, c, python, ada, objc
 
 ui:
   bundle:
