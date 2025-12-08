@@ -1,4 +1,4 @@
-FROM docker.io/antora/antora:3.1.10
+FROM docker.io/antora/antora:3.1.12
 
 # We have yarn.tar.gz with all these deps
 # This was needed because javascript dependencies tend to rot with time
