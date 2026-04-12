@@ -1,0 +1,77 @@
+= Contributors
+
+Example usage for docs creation.
+
+== Commands
+
+- `make install`: Builds the Dockerfile.
+- `make build`: Compiles Antora Docs.
+- `make sh`: Opens the Container.
+- `make server`: Starts a new server for the html version. (requires python3).
+
+== Usage
+
+. Change `CONTAINER_LABEL=local/antora:example-docs` (in Makefile) to an unique name for your docs.
+. Install the Container: `make install`.
+. (In another terminal) Open a localhost: `make server`.
+. Open Container: `make sh`.
+. Change settings in `antora-playbook.yml`
+. Add modules in `antora.yml`
+. Run Antora: `antora antora-playbook.yml --stacktrace`.
+. See results in `localhost:8000`
+
+If something does not work or not render well remember that *antora* needs a git repository.
+
+- `git init`: Creates a new git repo.
+- `git commit -am 'update docs'`: Creates a new commit, after this try to render the docs again.
+
+[NOTE]
+====
+If you want to have `make` in Windows you can use https://git-scm.com/install/windows[bash from git]
+====
+
+== How to add content
+
+Inside `modules` you can add a new module that will contain pages, examples and images.
+
+Example let's create a new *users* module.
+
+[source, text]
+----
+modules/
+  users/
+   nav.adoc
+   pages/
+      users.adoc
+      roles.adoc
+    images/
+      image1.png
+    examples/
+      example.py
+  ROOT/
+    ...
+----
+
+- pages: Will contain the adoc pages for the content.
+- images: Will contain images used inside the pages with `image::image1.png[]`.
+- examples: Will contain code examples and other resources for the content. 
+
+=== Contents
+
+Inside `nav.adoc` you must put the pages.
+
+.nav.adoc
+[source, asciidoc]
+----
+.Users
+* xref:users.adoc[]
+* xref:roles.adoc[]
+----
+
+Inside `examples` you can store code.
+
+.example.exs
+[source, elixir]
+----
+include::modules/ROOT/examples/example.exs[]
+----
