@@ -1,0 +1,3 @@
+enabled: false
+build:
+  command: asciidoctor-pdf -a toc -a source-highlighter=rouge  -a compress -r asciidoctor-mathematical
