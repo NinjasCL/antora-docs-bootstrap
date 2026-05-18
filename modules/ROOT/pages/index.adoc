@@ -1,5 +1,6 @@
 = Welcome!
 :navtitle: Welcome
+:stem:
 
 Example using _UML_ and _Emoji_.
 
@@ -82,7 +83,8 @@ Ref: posts.user_id > users.id // many-to-one
 ----
 
 == Asciimath using explicit block and macro names
-:stem: latexmath
+// :stem: latexmath
+// :stem: mathjax
 :a: a
 :b: b
 :sqroot: sqrt
@@ -90,10 +92,32 @@ Ref: posts.user_id > users.id // many-to-one
 
 == Configuration
 
-* The `:stem:` attribute in the document header specifies latexmath.
-* In these examples, use of asciimath is signaled using the explicit '`asciimath`' block and macro name notation.
+* The `:stem:` attribute in the document header specifies _latexmath_ or _mathjax_.
+* In these examples, use of _asciimath_ is signaled using the explicit '`asciimath`' block and macro name notation. Note that _asciimath_ is not compatible with PDF output.
 
 == Examples
+
+=== Stem block
+
+[stem]
+++++
+\begin{aligned}
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m &= b_1 \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m &= b_2 \\
+&\vdots \\
+a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m &= b_n
+\end{aligned}
+++++
+
+=== Mathjax block
+
+[mathjax]
+++++
+\begin{cases}
+2x_1 + x_2 = 15 \\
+x_1 + 3x_2 = 20
+\end{cases}
+++++
 
 === Asciimath block
 

@@ -97,5 +97,18 @@ If you typed the URL of this page manually, please double check that you entered
 <script src="/antora-docs-bootstrap/_/js/vendor/lunr.js"></script>
 <script src="/antora-docs-bootstrap/_/js/search-ui.js" id="search-ui-script" data-site-root-path="/antora-docs-bootstrap" data-snippet-length="100" data-stylesheet="/antora-docs-bootstrap/_/css/search.css"></script>
 <script async src="/antora-docs-bootstrap/search-index.js"></script>
-  </body>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      ignoreHtmlClass: 'nostem|no-mathjax'
+    }
+  };
+</script>
+<script id="MathJax-script" async src="/antora-docs-bootstrap/_/js/vendor/tex-chtml.js"></script>  </body>
 </html>

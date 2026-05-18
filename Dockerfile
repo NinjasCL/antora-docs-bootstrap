@@ -16,13 +16,19 @@ RUN rm /usr/local/share/.config/yarn/global/yarn.tar.gz
 # PDF and Epub Export
 # Enable if desired
 
-# RUN apk add ruby ruby-dev build-base cmake bison flex python3 glib glib-dev cairo cairo-dev pango pango-dev gdk-pixbuf gdk-pixbuf-dev libxml2 libxml2-dev
-# RUN gem install bundler
-# RUN gem install asciidoctor
-# RUN gem install asciidoctor-pdf
+# RUN apk add ruby ruby-dev build-base
+# RUN gem install bundler rouge
+# RUN gem install asciidoctor asciidoctor-pdf
 # RUN gem install asciidoctor-epub3
-# RUN gem install rouge
+# RUN gem install asciidoctor-pdf-mathjax
+
+# Other Math Engines
+
+# Asciimath
 # RUN gem install asciimath
+
+# Mathematical
+# RUN apk add cmake bison flex python3 glib glib-dev cairo cairo-dev pango pango-dev gdk-pixbuf gdk-pixbuf-dev libxml2 libxml2-dev
 # RUN gem install asciidoctor-mathematical
 
 # Update to the same antora version as docker if needed
