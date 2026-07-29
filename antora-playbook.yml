@@ -12,8 +12,8 @@ content:
 antora:
   extensions:
     - require: "@antora/lunr-extension"
-    - require: "@antora/pdf-extension"
-    - require: "@antora/epub-extension"
+    #- require: "@antora/pdf-extension"
+    #- require: "@antora/epub-extension"
 
 asciidoc:
   extensions:
