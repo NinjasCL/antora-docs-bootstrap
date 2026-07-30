@@ -36,7 +36,7 @@ These are the same so you can choose which is best for your use case.
 
 This separation is important so the developer can use this template and add it 
 to a ongoing project easily or start a new one using the file structure as a base.
-The important thing is storing `antora-playbook.yml`` at the same level as the `.git` directory.
+The important thing is storing `antora-playbook.yml` at the same level as the `.git` directory.
 
 == License
 
