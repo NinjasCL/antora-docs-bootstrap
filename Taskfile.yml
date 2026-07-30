@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+# A Taskfile.yml as an alternative to Makefile
+version: "3.17"
+
+vars:
+  BUILD: docker
+  CONTAINER_LABEL: local/antora:example-docs
+
+tasks:
+  install:
+    desc: Build the Antora container image
+    aliases: [i]
+    cmd: '{{.BUILD}} build -t {{.CONTAINER_LABEL}} .'
+
+  build:
+    desc: Build the documentation site
+    aliases: [b]
+    cmds:
+      - rm -rf docs
+      - '{{.BUILD}} run --rm -t -v .:/antora:z {{.CONTAINER_LABEL}} antora-playbook.yml --stacktrace'
+      - touch docs/.nojekyll
+
+  server:
+    desc: Serve the generated site locally
+    aliases: [s]
+    dir: docs
+    cmd: python3 -m http.server
+
+  shell:
+    desc: Open a shell in the Antora container
+    aliases: [sh]
+    interactive: true
+    cmd: '{{.BUILD}} run --rm -it --entrypoint /bin/sh -v .:/antora:z {{.CONTAINER_LABEL}}'
+
+  antora.build:
+    desc: Build using the locally installed Antora CLI
+    aliases: [ab]
+    cmd: antora antora-playbook.yml --stacktrace

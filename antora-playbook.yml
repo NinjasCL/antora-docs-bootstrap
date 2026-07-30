@@ -7,11 +7,12 @@ content:
   sources:
     - url: .
       branches: HEAD
-      start_path: .
+      start_path: antora/
 
 antora:
   extensions:
     - require: "@antora/lunr-extension"
+    # Optional extensions
     #- require: "@antora/pdf-extension"
     #- require: "@antora/epub-extension"
 
@@ -33,10 +34,10 @@ asciidoc:
 ui:
   bundle:
   # https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
-    url: ui-bundle.zip
+    url: antora/ui-bundle.zip
     snapshot: true
   # https://gitlab.com/antora/antora-ui-default/-/tree/master/src/partials
-  supplemental_files: supplemental-ui/
+  supplemental_files: antora/supplemental-ui/
 
 output:
   dir: docs/

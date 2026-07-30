@@ -10,6 +10,33 @@ It includes:
 - Kroki (Plant UML and others)
 - Search
 
+== Usage
+
+A _Makefile_ and a _Taskfile.yml_ can be used to build the docs.
+These are the same so you can choose which is best for your use case.
+
+*Makefile*
+
+- `make install`: Builds the Dockerfile.
+- `make build`: Compiles Antora Docs.
+- `make sh`: Opens the Container.
+- `make server`: Starts a new server for the html version. (requires python3).
+
+*Taskfile.yml*
+
+- `task install`: Builds the Dockerfile.
+- `task build`: Compiles Antora Docs.
+- `task sh`: Opens the Container.
+- `task server`: Starts a new server for the html version. (requires python3).
+
+== Directories
+
+- antora/: Contains the main antora docs configuration files and documentation.
+- docs/: The build command will generate a docs directory so it can be used in Github pages.
+
+This separation is important so the developer can use this template and add it 
+to a ongoing project easily or start a new one using the file structure as a base.
+
 == License
 
 Created with ❤️ by https://ninjas.cl[Camilo Castro] and https://github.com/NinjasCL/antora-docs-bootstrap/graphs/contributors[contributors]footnote:[https://github.com/NinjasCL/antora-docs-bootstrap/graphs/contributors]. for https://ninjas.cl[Ninjas.cl]{fn-ninjas}.

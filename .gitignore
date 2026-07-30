@@ -3,4 +3,4 @@
 .idea
 node_modules/
 dbml-error.log
-build/
+antora/build/
