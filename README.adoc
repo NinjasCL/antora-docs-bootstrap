@@ -31,11 +31,12 @@ These are the same so you can choose which is best for your use case.
 
 == Directories
 
-- antora/: Contains the main antora docs configuration files and documentation.
-- docs/: The build command will generate a docs directory so it can be used in Github pages.
+- `antora/`: Contains the main antora docs configuration files and documentation.
+- `docs/`: The build command will generate a docs directory so it can be used in Github pages.
 
 This separation is important so the developer can use this template and add it 
 to a ongoing project easily or start a new one using the file structure as a base.
+The important thing is storing `antora-playbook.yml`` at the same level as the `.git` directory.
 
 == License
 
