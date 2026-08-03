@@ -6,9 +6,7 @@ install i:
 	${BUILD} build -t ${CONTAINER_LABEL} .
 
 build b:
-	@rm -rf docs/
-	${BUILD} run -v .:/antora:z --rm -t ${CONTAINER_LABEL} antora-playbook.yml --stacktrace
-	@touch docs/.nojekyll
+	${BUILD} run -v .:/antora:z --rm --entrypoint /bin/sh ${CONTAINER_LABEL} -c \"rm -rf /antora/docs && antora antora-playbook.yml --stacktrace && touch /antora/docs/.nojekyll && chown -R $(id -u):$(id -g) /antora/docs\"
 
 server s:
 	@cd docs && python3 -m http.server
