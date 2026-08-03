@@ -4,7 +4,7 @@ version: "3.17"
 
 vars:
   BUILD: docker
-  CONTAINER_LABEL: local/antora:colabor-documentation
+  CONTAINER_LABEL: local/antora:example-docs
 
 tasks:
   install:
