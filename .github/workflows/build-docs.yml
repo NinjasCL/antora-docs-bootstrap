@@ -1,0 +1,41 @@
+name: Build Antora Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'antora/**'
+      - 'antora-playbook.yml'
+      - 'Taskfile.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Task
+        uses: go-task/setup-task@v2
+
+      - name: Install (Build Docker image)
+        run: task install
+
+      - name: Generate the Antora site
+        run: task build
+
+      - name: Commit Generated Documentation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          if git diff --cached --quiet; then
+            echo "No changes in generated documentation"
+          else
+            git commit -m "docs: build antora site"
+            git push
+          fi
