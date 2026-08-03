@@ -4,35 +4,49 @@ version: "3.17"
 
 vars:
   BUILD: docker
-  CONTAINER_LABEL: local/antora:example-docs
+  CONTAINER_LABEL: local/antora:colabor-documentation
 
 tasks:
   install:
-    desc: Build the Antora container image
-    aliases: [i]
-    cmd: '{{.BUILD}} build -t {{.CONTAINER_LABEL}} .'
+    aliases:
+      - i
+    desc: Build the Antora Docker image
+    cmds:
+      - "{{.BUILD}} build -t {{.CONTAINER_LABEL}} antora/"
 
   build:
-    desc: Build the documentation site
-    aliases: [b]
+    aliases:
+      - b
+    desc: Generate the Antora site
+    # Skip the build when the docs are up to date: no antora source changes
+    # since the last commit that generated docs/, and no uncommitted changes.
+    status:
+      - "git diff --quiet \"$(git log -1 --format=%H -- docs/)\" HEAD -- antora/ antora-playbook.yml && git diff --quiet -- antora/ antora-playbook.yml"
+    # Run the Antora container as root to remove the previous site, generate the
+    # new one and add .nojekyll. The chown transfers ownership of docs/ to the
+    # current user so the host (e.g. the CI runner) can write and commit it.
+    # To force a rebuild even when up to date, use: task build --force
     cmds:
-      - rm -rf docs
-      - '{{.BUILD}} run --rm -t -v .:/antora:z {{.CONTAINER_LABEL}} antora-playbook.yml --stacktrace'
-      - touch docs/.nojekyll
+      - "{{.BUILD}} run -v .:/antora:z --rm --entrypoint /bin/sh {{.CONTAINER_LABEL}} -c \"rm -rf /antora/docs && antora antora-playbook.yml --stacktrace && touch /antora/docs/.nojekyll && chown -R $(id -u):$(id -g) /antora/docs\""
 
   server:
-    desc: Serve the generated site locally
-    aliases: [s]
+    aliases:
+      - s
+    desc: Serve the generated documentation locally
     dir: docs
-    cmd: python3 -m http.server
+    cmds:
+      - python3 -m http.server
 
   shell:
-    desc: Open a shell in the Antora container
-    aliases: [sh]
-    interactive: true
-    cmd: '{{.BUILD}} run --rm -it --entrypoint /bin/sh -v .:/antora:z {{.CONTAINER_LABEL}}'
+    aliases:
+      - sh
+    desc: Open a shell inside the Antora container
+    cmds:
+      - "{{.BUILD}} run -it --entrypoint /bin/sh -v .:/antora:z -t {{.CONTAINER_LABEL}}"
 
   antora.build:
-    desc: Build using the locally installed Antora CLI
-    aliases: [ab]
-    cmd: antora antora-playbook.yml --stacktrace
+    aliases:
+      - ab
+    desc: Run Antora directly from the host
+    cmds:
+      - antora antora-playbook.yml --stacktrace
